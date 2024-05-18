@@ -6,7 +6,7 @@ namespace YetAnotherDungeonCrawler
         {
             Name = name;
             MaxHealth = maxHealth;
-            maxHealth = maxHealth;
+            Health = maxHealth;
             AttackPower = attackPower;
             Inventory = new List<InventoryItem>();
 
