@@ -7,6 +7,7 @@ namespace YetAnotherDungeonCrawler
 {
     public class Character
     {
+        bool canMove = false;
         string Name { get; set; }
         int Health { get; set; }
         int MaxHealth { get; set; }
@@ -33,7 +34,18 @@ namespace YetAnotherDungeonCrawler
         }
         else
         {
-            Console.WriteLine($"{enemy.Name} has {enemy.Health} health remaining");
+            Console.WriteLine($"{enemy.Name} has {enemy.Health} health remaining.");
         }
+    }
+
+    void Move(string direction)
+    {
+        Console.WriteLine($"{Name} Moves in {direction}.");
+    }
+
+    void PickupItem(Item item)
+    {
+        Inventory.Add(item);
+        Console.WriteLine($"{Name} picked up {item.Name}.");
     }
 }
