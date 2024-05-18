@@ -13,7 +13,7 @@ namespace YetAnotherDungeonCrawler
             Console.WriteLine("So here's the Rules:");
             Console.WriteLine("You must travel through this dungeon to find the long lost artifact");
             Console.WriteLine("There will be enemies and items in some rooms");
-            Console.Writeline("You can attack, move, pickup items and use items");
+            Console.WriteLine("You can attack, move, pickup items and use items");
             Console.WriteLine("If you enter a room with an enemy you must kill the enemy before leaving");
             Console.WriteLine("The game ends when you die or when you retrieve the lost artifact!");
         }
