@@ -22,11 +22,13 @@ namespace YetAnotherDungeonCrawler
                 Inventory.Add(item);
                 Console.WriteLine($"{Name} picked up {item.Name}.");
             }    
+            
             void Respawn()
             {
                 if (!player.IsAlive)
                 {
                     //Resets game
+
                 }
             }
         }
