@@ -1,55 +1,52 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace YetAnotherDungeonCrawler
 {
     public class Character
     {
-        bool canMove = false;
-        string Name { get; set; }
-        int Health { get; set; }
-        int MaxHealth { get; set; }
-        int AttackPower { get; set; }
-        List<Item> Inventory { get; set; }
-    }
+        protected bool canMove = false;
+        protected string Name { get; set; }
+        protected int Health { get; set; }
+        protected int MaxHealth { get; set; }
+        protected int AttackPower { get; set; }
+        protected List<Item> Inventory { get; set; }
 
-    Character(int MaxHealth, int AttackPower,)
-    {
-        MaxHealth = MaxHealth;
-        MaxHealth = MaxHealth;
-        AttackPower = AttackPower;
-        Inventory = new List<Item>();
-    }
-    
-    void Attack(Enemy enemy)
-    {
-        Console.WriteLine($"{Name} attacked {enemy.Name} for {AttackPower} damage.");
-        enemy.Health -= AttackPower;
-        if (enemy.Health <= 0)
+        protected Character(string name, int maxHealth, int attackPower)
         {
-            Console.WriteLine($"{enemy.Name} was slain.")
-            enemy.Health = 0;
+            Name = name;
+            Health = maxHealth;
+            MaxHealth = maxHealth;
+            AttackPower = attackPower;
+            Inventory = new List<Item>();
         }
-        else
+
+        public void Attack(Enemy enemy)
         {
-            Console.WriteLine($"{enemy.Name} has {enemy.Health} health remaining.");
+            Console.WriteLine($"{Name} attacked {enemy.Name} for {AttackPower} damage.");
+            enemy.Health -= AttackPower;
+            if (enemy.Health <= 0)
+            {
+                Console.WriteLine($"{enemy.Name} was slain.");
+                enemy.Health = 0;
+            }
+            else
+            {
+                Console.WriteLine($"{enemy.Name} has {enemy.Health} health remaining.");
+            }
         }
-    }
 
-    void Move(string direction)
-    {
-        Console.WriteLine($"{Name} Moves in {direction}.");
-    }
+        public void Move(string direction)
+        {
+            Console.WriteLine($"{Name} moves in {direction}.");
+        }
 
-    void PickupItem(Item item)
-    {
-        Inventory.Add(item);
-        Console.WriteLine($"{Name} picked up {item.Name}.");
-    }
-    void Die()
-    {
-        Console.WriteLine($"{Name} has suffered a very tragic and painfull death");
+        public void PickupItem(Item item)
+        {
+            Inventory.Add(item);
+            Console.WriteLine($"{Name} picked up {item.Name}.");
+        }
+
+        public void Die()
+        {
+            Console.WriteLine($"{Name} has suffered a very tragic and painful death.");
+        }
     }
 }
