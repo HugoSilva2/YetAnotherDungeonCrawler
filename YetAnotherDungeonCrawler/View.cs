@@ -18,43 +18,43 @@ namespace YetAnotherDungeonCrawler
             Console.WriteLine("The game ends when you die or when you retrieve the lost artifact!");
         }
 
-        void Move()
+        public void Move(name, id)
         {
 
         }
 
-        void Attack(string name1, string name2, int damage)
+        public void Attack(string name1, string name2, int damage)
         {
             Console.WriteLine($"{name1} attacked {name2} for {damage} damage.")
         }
 
-        void Heal(string name, int heal)
+        public void Heal(string name, int heal)
         {
             Console.WriteLine($"{name} healed {heal} HP.");
         }
 
-        void RoomDescription()
+        public void RoomDescription()
         {
 
         }
 
-        void PickUpItem(string name, Item item)
+        public void PickUpItem(string name, Item item)
         {
             Console.WriteLine($"{name} picked up {item.Name}");
         }
 
-        void UI(int health, int maxhealth, int attackpower)
+        public void UI(int health, int maxhealth, int attackpower)
         {
             Console.Write($"Health: {health}/{maxhealth}");
             Console.WriteLine($"  Attack Power: {attackpower}");
         }
         
-        void Inventory()
+        public void Inventory()
         {
 
         }
 
-        void TheEnd()
+        public void TheEnd()
         {
             Console.WriteLine("You got the Artifact!");
             Console.WriteLine("Thanks for playing our game!");
