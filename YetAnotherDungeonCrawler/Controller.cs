@@ -12,7 +12,12 @@ namespace YetAnotherDungeonCrawler
             view.Intro();
 
             player = new Player("Lord McBullshitus", 100, 20);
-            enemy = new Enemy("Corporate Bad Guy", 50, 10);
+            rooms = new List<Room>
+            {
+                new Room(1, new Enemy("Loyal Intern", 50, 10), new Item("Coffee Mug")),
+                new Room(2, new Enemy("Jannitor", 80, 15), new Item("Broom")),
+                new Room(3, new Enemy("Novice", 200, 30), new Item("Glasses"))
+            };
             
 
         }
