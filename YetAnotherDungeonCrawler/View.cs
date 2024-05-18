@@ -5,8 +5,12 @@ using System.Threading.Tasks;
 
 namespace YetAnotherDungeonCrawler
 {
-    public class View
+    public class View : IView
     {
-        
+        public void Intro()
+        {
+            Console.WriteLine("Welcome to Yet Another Dungeon Crawler!");
+            Console.WriteLine("So here's the Rules:");
+        }
     }
 }

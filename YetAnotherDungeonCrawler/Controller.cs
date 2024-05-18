@@ -7,6 +7,12 @@ namespace YetAnotherDungeonCrawler
 {
     public class Controller
     {
-        
+        public void Start(IView view)
+        {
+            view.Intro();
+
+            //Game Loop
+
+        }
     }
 }
