@@ -48,4 +48,8 @@ namespace YetAnotherDungeonCrawler
         Inventory.Add(item);
         Console.WriteLine($"{Name} picked up {item.Name}.");
     }
+    void Die()
+    {
+        Console.WriteLine($"{Name} has suffered a very tragic and painfull death");
+    }
 }
