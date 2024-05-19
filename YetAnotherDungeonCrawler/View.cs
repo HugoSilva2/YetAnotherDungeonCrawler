@@ -20,7 +20,7 @@ namespace YetAnotherDungeonCrawler
 
         public void Move(string name, int id)
         {
-            
+            // Implementation of Move
         }
 
         public void Attack(string name1, string name2, int damage)
@@ -35,7 +35,7 @@ namespace YetAnotherDungeonCrawler
 
         public void RoomDescription()
         {
-            
+            // Implementation of RoomDescription
         }
 
         public void PickUpItem(string name, Item item)
@@ -51,7 +51,7 @@ namespace YetAnotherDungeonCrawler
         
         public void Inventory()
         {
-            
+            // Implementation of Inventory
         }
 
         public void TheEnd()
@@ -72,7 +72,7 @@ namespace YetAnotherDungeonCrawler
         }
     }
 
-    
+    // Assuming definitions for IView, Item, and Enemy classes/interfaces
     public interface IView
     {
         void Intro();

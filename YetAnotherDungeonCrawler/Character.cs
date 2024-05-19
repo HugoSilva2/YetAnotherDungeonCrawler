@@ -15,36 +15,41 @@ namespace YetAnotherDungeonCrawler
         public int AttackPower { get; set; }
         public List<Item> Inventory { get; set; }
 
-        Character(int MaxHealth, int AttackPower)
+        public Character(int maxHealth, int attackPower)
         {
-            MaxHealth = MaxHealth;
-            MaxHealth = MaxHealth;
-            AttackPower = AttackPower;
+            MaxHealth = maxHealth;
+            Health = maxHealth; // Initialize Health to MaxHealth
+            AttackPower = attackPower;
             Inventory = new List<Item>();
         }
         
-        void Attack(something)
+        public void Attack(Character target)
         {
-            Console.WriteLine($"{Name} attacked {something.Name} for {AttackPower} damage.");
-            something.Health -= AttackPower;
-            if (something.Health <= 0)
+            Console.WriteLine($"{Name} attacked {target.Name} for {AttackPower} damage.");
+            target.Health -= AttackPower;
+            if (target.Health <= 0)
             {
-                //Call Die Method
-                Die();
-                something.IsAlive = false;
+                target.Die();
+                target.IsAlive = false;
             }
             else
             {
-                Console.WriteLine($"{something.Name} has {something.Health} health remaining.");
+                Console.WriteLine($"{target.Name} has {target.Health} health remaining.");
             }
         }
 
         void Die()
         {
-            if (something.Health <= 0)
+            if (Health <= 0)
             {
-                Console.WriteLine($"{something.Name} has suffered a very tragic and painfull death");
+                Console.WriteLine($"{Name} has suffered a very tragic and painful death");
             }
         }
+    }
+
+    // Assuming definitions for Item class
+    public class Item
+    {
+        public string Name { get; set; }
     }
 }
