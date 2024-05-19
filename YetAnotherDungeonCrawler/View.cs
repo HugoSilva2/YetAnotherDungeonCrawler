@@ -71,5 +71,11 @@ namespace YetAnotherDungeonCrawler
                 Console.WriteLine(item.Name);
             }
         }
+
+        public string GetPlayerInput()
+        {
+            Console.Write("Enter your action: ");
+            return Console.ReadLine();
+        }
     }
 }

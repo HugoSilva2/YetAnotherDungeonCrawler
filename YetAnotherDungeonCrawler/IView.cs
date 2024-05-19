@@ -14,5 +14,6 @@ namespace YetAnotherDungeonCrawler
         void Inventory();
         void TheEnd();
         void DisplayRoomInfo(Room room);
+        string GetPlayerInput(); // Adicionado
     }
 }

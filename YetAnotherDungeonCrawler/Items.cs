@@ -1,10 +1,10 @@
 namespace YetAnotherDungeonCrawler
 {
-    public class Items
+    public class Item
     {
         public string Name { get; set; }
 
-        public Items(string name)
+        public Item(string name)
         {
             Name = name;
         }
