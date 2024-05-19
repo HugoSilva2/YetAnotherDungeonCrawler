@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace YetAnotherDungeonCrawler
 {
@@ -47,9 +45,13 @@ namespace YetAnotherDungeonCrawler
         }
     }
 
-    // Assuming definitions for Item class
     public class Item
     {
         public string Name { get; set; }
+    }
+
+    public class Enemy : Character
+    {
+        // Additional properties and methods specific to Enemy
     }
 }

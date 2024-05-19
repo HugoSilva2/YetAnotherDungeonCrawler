@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace YetAnotherDungeonCrawler
 {
@@ -61,7 +59,7 @@ namespace YetAnotherDungeonCrawler
             Console.WriteLine("THE END");
         }
 
-        void DisplayRoomInfo(Enemy enemy, List<Item> items)
+        public void DisplayRoomInfo(Enemy enemy, List<Item> items)
         {
             Console.WriteLine($"Enemy: {enemy.Name}");
             Console.WriteLine("Items in the room: ");
@@ -72,19 +70,7 @@ namespace YetAnotherDungeonCrawler
         }
     }
 
-    // Assuming definitions for IView, Item, and Enemy classes/interfaces
-    public interface IView
-    {
-        void Intro();
-        void Move(string name, int id);
-        void Attack(string name1, string name2, int damage);
-        void Heal(string name, int heal);
-        void RoomDescription();
-        void PickUpItem(string name, Item item);
-        void UI(int health, int maxhealth, int attackpower);
-        void Inventory();
-        void TheEnd();
-    }
+    
 
     public class Item
     {
