@@ -7,16 +7,15 @@ namespace YetAnotherDungeonCrawler
 {
     public class Room
     {
-        int id { get; set; }
+        public int Id { get; private set; }
+        public Enemy Enemy { get; set; }
+        public List<Item> Items { get; set; }
 
-        Enemy enemy{ get; set; }
-        List<Item> items { get; set; }
-        Room(int id, Enemy enemy, List<Item> items)
+        public Room(int id, Enemy enemy, List<Item> items)
         {
-            id = id;
+            Id = id;
             Enemy = enemy;
             Items = items;
         }
-        
     }
 }
