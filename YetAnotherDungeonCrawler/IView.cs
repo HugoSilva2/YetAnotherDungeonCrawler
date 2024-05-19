@@ -1,7 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace YetAnotherDungeonCrawler
 {
@@ -16,6 +13,6 @@ namespace YetAnotherDungeonCrawler
         void UI(int health, int maxhealth, int attackpower);
         void Inventory();
         void TheEnd();
-        void DisplayRoomInfo(Enemy enemy, List<Item> items);
+        void DisplayRoomInfo(Room room);
     }
 }

@@ -6,6 +6,7 @@ namespace YetAnotherDungeonCrawler
     public class Character
     {
         public bool IsAlive { get; private set; } = true;
+        public bool CanMove { get; set; }
         public string Name { get; set; }
         public int Health { get; set; }
         public int MaxHealth { get; set; }
@@ -15,7 +16,7 @@ namespace YetAnotherDungeonCrawler
         public Character(int maxHealth, int attackPower)
         {
             MaxHealth = maxHealth;
-            Health = maxHealth;
+            Health = maxHealth; // Initialize Health to MaxHealth
             AttackPower = attackPower;
             Inventory = new List<Item>();
         }
@@ -35,9 +36,12 @@ namespace YetAnotherDungeonCrawler
             }
         }
 
-        protected void Die()
+        void Die()
         {
-            Console.WriteLine($"{Name} has suffered a very tragic and painful death");
+            if (Health <= 0)
+            {
+                Console.WriteLine($"{Name} has suffered a very tragic and painful death");
+            }
         }
     }
 }

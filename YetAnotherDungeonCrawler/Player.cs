@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+
 namespace YetAnotherDungeonCrawler
 {
     public class Player : Character
@@ -18,6 +20,14 @@ namespace YetAnotherDungeonCrawler
         {
             Inventory.Add(item);
             Console.WriteLine($"{Name} picked up {item.Name}.");
+        }
+
+        public void Respawn()
+        {
+            if (!IsAlive)
+            {
+                // Reset game
+            }
         }
     }
 }
