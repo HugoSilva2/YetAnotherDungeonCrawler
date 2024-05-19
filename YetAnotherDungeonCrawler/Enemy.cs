@@ -9,4 +9,5 @@ namespace YetAnotherDungeonCrawler
             Name = name;
         }
     }
+    
 }

@@ -25,6 +25,8 @@ namespace YetAnotherDungeonCrawler
         {
             Console.WriteLine($"{Name} attacked {target.Name} for {AttackPower} damage.");
             target.Health -= AttackPower;
+            this.Health -= target.AttackPower;
+
             if (target.Health <= 0)
             {
                 target.Die();

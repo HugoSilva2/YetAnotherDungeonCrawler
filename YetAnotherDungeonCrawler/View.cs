@@ -22,6 +22,7 @@ namespace YetAnotherDungeonCrawler
         }
 
         public void Attack(string name1, string name2, int damage)
+        
         {
             Console.WriteLine($"{name1} attacked {name2} for {damage} damage.");
         }
@@ -61,6 +62,11 @@ namespace YetAnotherDungeonCrawler
 
         public void DisplayRoomInfo(Room room)
         {
+            if (room.Enemy == null)
+            {
+                Console.WriteLine("Room Cleared");
+                return;
+            }
             Console.WriteLine($"Enemy: {room.Enemy.Name}");
             Console.WriteLine("Items in the room: ");
             foreach (var item in room.Items)
