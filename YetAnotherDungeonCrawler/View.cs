@@ -18,7 +18,6 @@ namespace YetAnotherDungeonCrawler
 
         public void Move(string name, int id)
         {
-            // Implementação do movimento
             Console.WriteLine($"{name} moves to room {id}.");
         }
 
@@ -34,7 +33,6 @@ namespace YetAnotherDungeonCrawler
 
         public void RoomDescription()
         {
-            // Implementação da descrição da sala
             Console.WriteLine("Room description here.");
         }
 
@@ -51,7 +49,6 @@ namespace YetAnotherDungeonCrawler
 
         public void Inventory()
         {
-            // Implementação do inventário
             Console.WriteLine("Displaying inventory.");
         }
 
@@ -76,6 +73,15 @@ namespace YetAnotherDungeonCrawler
         {
             Console.Write("Enter your action: ");
             return Console.ReadLine();
+        }
+
+        public void ListActions()
+        {
+            Console.WriteLine("Possible actions:");
+            Console.WriteLine(" - move");
+            Console.WriteLine(" - attack");
+            Console.WriteLine(" - pickup");
+            Console.WriteLine(" - quit");
         }
     }
 }

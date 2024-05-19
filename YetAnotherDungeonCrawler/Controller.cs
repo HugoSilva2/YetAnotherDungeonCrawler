@@ -27,6 +27,7 @@ namespace YetAnotherDungeonCrawler
             {
                 Room currentRoom = rooms[currentRoomIndex];
                 view.DisplayRoomInfo(currentRoom);
+                view.ListActions();
                 string action = view.GetPlayerInput().ToLower();
 
                 switch (action)
