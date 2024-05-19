@@ -5,8 +5,7 @@ namespace YetAnotherDungeonCrawler
 {
     public class Character
     {
-        bool IsAlive = true;
-        bool canMove = false;
+        public bool IsAlive { get; private set; } = true;
         public string Name { get; set; }
         public int Health { get; set; }
         public int MaxHealth { get; set; }
@@ -16,7 +15,7 @@ namespace YetAnotherDungeonCrawler
         public Character(int maxHealth, int attackPower)
         {
             MaxHealth = maxHealth;
-            Health = maxHealth; // Initialize Health to MaxHealth
+            Health = maxHealth;
             AttackPower = attackPower;
             Inventory = new List<Item>();
         }
@@ -36,22 +35,9 @@ namespace YetAnotherDungeonCrawler
             }
         }
 
-        void Die()
+        protected void Die()
         {
-            if (Health <= 0)
-            {
-                Console.WriteLine($"{Name} has suffered a very tragic and painful death");
-            }
+            Console.WriteLine($"{Name} has suffered a very tragic and painful death");
         }
-    }
-
-    public class Item
-    {
-        public string Name { get; set; }
-    }
-
-    public class Enemy : Character
-    {
-        // Additional properties and methods specific to Enemy
     }
 }
