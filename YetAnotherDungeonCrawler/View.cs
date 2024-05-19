@@ -18,14 +18,14 @@ namespace YetAnotherDungeonCrawler
             Console.WriteLine("The game ends when you die or when you retrieve the lost artifact!");
         }
 
-        public void Move(name, id)
+        public void Move(string name, int id)
         {
-
+            
         }
 
         public void Attack(string name1, string name2, int damage)
         {
-            Console.WriteLine($"{name1} attacked {name2} for {damage} damage.")
+            Console.WriteLine($"{name1} attacked {name2} for {damage} damage.");
         }
 
         public void Heal(string name, int heal)
@@ -35,7 +35,7 @@ namespace YetAnotherDungeonCrawler
 
         public void RoomDescription()
         {
-
+            
         }
 
         public void PickUpItem(string name, Item item)
@@ -51,7 +51,7 @@ namespace YetAnotherDungeonCrawler
         
         public void Inventory()
         {
-
+            
         }
 
         public void TheEnd()
@@ -61,11 +61,38 @@ namespace YetAnotherDungeonCrawler
             Console.WriteLine("THE END");
         }
 
-        void DisplayRoomInfo()
+        void DisplayRoomInfo(Enemy enemy, List<Item> items)
         {
-            Console.WriteLine($"Enemy: {Enemy.Name}");
-            Console.WriteLine($"Items in the room: {Items.Name}");
+            Console.WriteLine($"Enemy: {enemy.Name}");
+            Console.WriteLine("Items in the room: ");
+            foreach (var item in items)
+            {
+                Console.WriteLine(item.Name);
+            }
         }
-        
+    }
+
+    
+    public interface IView
+    {
+        void Intro();
+        void Move(string name, int id);
+        void Attack(string name1, string name2, int damage);
+        void Heal(string name, int heal);
+        void RoomDescription();
+        void PickUpItem(string name, Item item);
+        void UI(int health, int maxhealth, int attackpower);
+        void Inventory();
+        void TheEnd();
+    }
+
+    public class Item
+    {
+        public string Name { get; set; }
+    }
+
+    public class Enemy
+    {
+        public string Name { get; set; }
     }
 }
