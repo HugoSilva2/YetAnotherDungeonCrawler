@@ -17,10 +17,6 @@ namespace YetAnotherDungeonCrawler
             Enemy = enemy;
             Items = items;
         }
-        void DisplayRoomInfo()
-        {
-            Console.WriteLine($"Enemy: {Enemy.Name}");
-            Console.WriteLine($"Items in the room: {Items.Name}");
-        }
+        
     }
 }

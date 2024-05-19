@@ -60,5 +60,12 @@ namespace YetAnotherDungeonCrawler
             Console.WriteLine("Thanks for playing our game!");
             Console.WriteLine("THE END");
         }
+
+        void DisplayRoomInfo()
+        {
+            Console.WriteLine($"Enemy: {Enemy.Name}");
+            Console.WriteLine($"Items in the room: {Items.Name}");
+        }
+        
     }
 }

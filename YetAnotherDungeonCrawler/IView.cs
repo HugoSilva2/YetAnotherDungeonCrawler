@@ -9,6 +9,8 @@ namespace YetAnotherDungeonCrawler
     {
         void Intro();
 
+        void DisplayRoomInfo();
+
         
     }
 }
