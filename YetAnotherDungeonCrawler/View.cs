@@ -18,7 +18,7 @@ namespace YetAnotherDungeonCrawler
 
         public void Move(string name, int id)
         {
-            Console.WriteLine($"{name} moves to room {id}.");
+            Console.WriteLine($"{name} moves {id}.");
         }
 
         public void Attack(string name1, string name2, int damage)
@@ -78,7 +78,10 @@ namespace YetAnotherDungeonCrawler
         public void ListActions()
         {
             Console.WriteLine("Possible actions:");
-            Console.WriteLine(" - move");
+            Console.WriteLine(" - move right");
+            Console.WriteLine(" - move left");
+            Console.WriteLine(" - move up");
+            Console.WriteLine(" - move down");
             Console.WriteLine(" - attack");
             Console.WriteLine(" - pickup");
             Console.WriteLine(" - quit");

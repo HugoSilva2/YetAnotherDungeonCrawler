@@ -10,16 +10,18 @@ namespace YetAnotherDungeonCrawler
         private int currentRoomIndex;
         private bool gameRunning = false;
 
+        private int currentRoomId = 0;
+
         public void Start(IView view)
         {
             view.Intro();
 
-            player = new Player("Lord McBullshitus", 100, 20);
+            player = new Player("Lord W Rizz", 100, 20);
             rooms = new List<Room>
             {
-                new Room(1, new Enemy("Loyal Intern", 50, 10), new List<Item> { new Item("Coffee Mug") }),
-                new Room(2, new Enemy("Janitor", 80, 15), new List<Item> { new Item("Broom") }),
-                new Room(3, new Enemy("Novice", 200, 30), new List<Item> { new Item("Glasses") })
+                new Room(0, new Enemy("Loyal Intern", 50, 10), new List<Item> { new Item("Coffee Mug") }),
+                new Room(7, new Enemy("Janitor", 80, 15), new List<Item> { new Item("Broom") }),
+                new Room(2, new Enemy("Novice", 200, 30), new List<Item> { new Item("Glasses") })
             };
 
             gameRunning = true;
@@ -32,16 +34,32 @@ namespace YetAnotherDungeonCrawler
 
                 switch (action)
                 {
-                    case "move":
-                        if (currentRoomIndex < rooms.Count - 1)
+                    case "move right":
+                        currentRoomIndex += 2;
+                        if (currentRoomIndex >= rooms.Count)
                         {
-                            currentRoomIndex++;
-                            view.Move(player.Name, currentRoomIndex);
+                            Console.WriteLine("Can't move any further");
+                            break;                       
                         }
-                        else
-                        {
-                            Console.WriteLine("You can't move further.");
-                        }
+                        view.Move(player.Name, currentRoomIndex);
+
+                        break;
+                    case "move left":
+                        currentRoomIndex -= 2;
+                        view.Move(player.Name, currentRoomIndex);
+
+                        break;
+
+                    case "move up":
+                        currentRoomIndex += 7;
+                        view.Move(player.Name, currentRoomIndex);
+
+                        break;
+
+                    case "move down":
+                        currentRoomIndex -= 7;
+                        view.Move(player.Name, currentRoomIndex);
+
                         break;
 
                     case "attack":
