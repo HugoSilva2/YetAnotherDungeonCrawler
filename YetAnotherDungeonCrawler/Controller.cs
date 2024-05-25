@@ -65,13 +65,21 @@ namespace YetAnotherDungeonCrawler
                         break;
 
                     case "attack":
-                        player.Attack(currentRoom.Enemy);
+                        if (currentRoom.Enemy != null)
+                        {
+                            player.Attack(currentRoom.Enemy);
                         if (currentRoom.Enemy.Health <= 0)
                         {
                             Console.WriteLine($"{currentRoom.Enemy.Name} was slain.");
                             currentRoom.Enemy = null;  // Remove enemy
                         }
+                        }
+                        else
+                        {
+                        Console.WriteLine("There is no enemy to attack.");
+                        }
                         break;
+
 
                     case "pickup":
                         if (currentRoom.Items.Count > 0)
