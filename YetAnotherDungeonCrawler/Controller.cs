@@ -50,6 +50,11 @@ namespace YetAnotherDungeonCrawler
                             view.Move(player.Name, currentRoomId);
                         }
                         break;
+                    
+                    case "use potion":
+                        player.UseHealthPotion();
+                        break;
+
 
                     case "move left":
                         currentRoomId -= 1;
