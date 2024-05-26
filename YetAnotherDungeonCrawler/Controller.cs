@@ -113,7 +113,10 @@ namespace YetAnotherDungeonCrawler
                             if (currentRoom.Items.Count > 0)
                             {
                                 var item = currentRoom.Items[0];
-                                player.PickupItem(item);
+                                if (player.PickupItem(item))
+                                {
+                                    currentRoom.Items.RemoveAt(0);
+                                }
                             }
                             else
                             {
@@ -122,9 +125,10 @@ namespace YetAnotherDungeonCrawler
                         }
                         else
                         {
-                           view.NoPickUP();
+                            view.NoPickUP();
                         }
                         break;
+
 
                     case "quit":
                         gameRunning = false;

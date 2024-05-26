@@ -41,6 +41,7 @@ namespace YetAnotherDungeonCrawler
             Console.WriteLine($"{name} picked up {item.Name}");
         }
 
+
         public void UI(int health, int maxhealth, int attackpower)
         {
             Console.Write($"Health: {health}/{maxhealth}");

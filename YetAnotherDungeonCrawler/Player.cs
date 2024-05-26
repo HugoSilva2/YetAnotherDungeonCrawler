@@ -18,11 +18,22 @@ namespace YetAnotherDungeonCrawler
             Console.WriteLine($"{Name} moves in {direction}.");
         }
 
-        public void PickupItem(Item item)
+        public bool PickupItem(Item item)
         {
-            Inventory.Add(item);
-            _view.PickUpItem(Name, item);
+            if (CanPickupItem())
+            {
+                Inventory.Add(item);
+                _view.PickUpItem(Name, item);
+                return true;
+            }
+            return false;
         }
+
+        public bool CanPickupItem()
+        {
+            return true; 
+        }
+
 
         public void UseHealthPotion()
         {
