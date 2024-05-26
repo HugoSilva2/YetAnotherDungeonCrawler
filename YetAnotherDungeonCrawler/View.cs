@@ -85,24 +85,22 @@ namespace YetAnotherDungeonCrawler
 
         public string GetPlayerInput()
         {
-            Console.Write("Enter your action: ");
             return Console.ReadLine();
         }
 
         public void ListActions()
         {
-            Console.WriteLine("Possible actions:");
-            Console.WriteLine(" - move right");
-            Console.WriteLine(" - move left");
-            Console.WriteLine(" - attack");
-            Console.WriteLine(" - use potion");
-            Console.WriteLine(" - pickup");
-            Console.WriteLine(" - quit");
+            Console.WriteLine("Available actions: move left, move right, attack, pickup, use potion, quit");
         }
 
         public void NoItem()
         {
             Console.WriteLine("No items to pick up.");
+        }
+
+        public void NoPotion()
+        {
+            Console.WriteLine("You have no health potions left.");
         }
     }
 }

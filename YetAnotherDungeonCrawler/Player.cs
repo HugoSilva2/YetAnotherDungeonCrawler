@@ -32,6 +32,7 @@ namespace YetAnotherDungeonCrawler
             {
                 Inventory.Add(item);
                 _view.PickUpItem(Name, item);
+                currentRoom.Items.Remove(item); 
             }
             else
             {
@@ -51,7 +52,7 @@ namespace YetAnotherDungeonCrawler
             }
             else
             {
-                _view.NoItem();
+                _view.NoPotion(); 
             }
         }
 

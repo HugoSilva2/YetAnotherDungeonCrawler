@@ -17,5 +17,6 @@ namespace YetAnotherDungeonCrawler
         string GetPlayerInput();
         void ListActions();
         void NoItem();
+        void NoPotion(); // Novo método para mensagem personalizada de poção
     }
 }

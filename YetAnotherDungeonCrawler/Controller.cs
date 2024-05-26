@@ -14,18 +14,18 @@ namespace YetAnotherDungeonCrawler
         {
             view.Intro();
 
-            player = new Player("Lord W Rizz", 100, 20, view);
+            player = new Player("John Warrior", 100, 30, view);
             rooms = new List<Room>
             {
-                new Room(-4, new Enemy("Novice", 200, 30), new List<Item> { new Item("Glasses") }),
-                new Room(-3, new Enemy("Novice", 200, 30), new List<Item> { new Item("Glasses") }),
-                new Room(-2, new Enemy("Novice", 200, 30), new List<Item> { new Item("Glasses") }),
-                new Room(-1, new Enemy("Novice", 200, 30), new List<Item> { new Item("Glasses") }),
-                new Room(0, new Enemy("Novice", 200, 30), new List<Item> { new Item("Health Potion") }),
-                new Room(1, new Enemy("Loyal Intern", 50, 10), new List<Item> { new Item("Coffee Mug") }),
-                new Room(2, new Enemy("Janitor", 80, 15), new List<Item> { new Item("Broom") }),
-                new Room(3, new Enemy("Novice", 200, 30), new List<Item> { new Item("Glasses") }),
-                new Room(4, new Enemy("Novice", 200, 30), new List<Item> { new Item("Artifact") })
+                new Room(-4, new Enemy("Skeleton", 35, 20), new List<Item> { new Item("Health Potion") }),
+                new Room(-3, new Enemy("Skeleton", 35, 20), new List<Item> { new Item("Health Potion") }),
+                new Room(-2, new Enemy("Goblin", 20, 10), new List<Item> { new Item("Health Potion") }),
+                new Room(-1, new Enemy("Goblin", 20, 10), new List<Item> { new Item("Useless Junk") }),
+                new Room(0, new Enemy("Goblin", 20, 10), new List<Item> { new Item("Health Potion") }),
+                new Room(1, new Enemy("Skeleton", 35, 20), new List<Item> { new Item("Useless Junk") }),
+                new Room(2, new Enemy("Skeleton", 35, 20), new List<Item> { new Item("Health Potion") }),
+                new Room(3, new Enemy("Slime", 120, 15), new List<Item> { new Item("Even More Useless Junk") }),
+                new Room(4, new Enemy("Bob The Necromancer", 200, 40), new List<Item> { new Item("Artifact") })
             };
 
             gameRunning = true;
@@ -110,7 +110,9 @@ namespace YetAnotherDungeonCrawler
                     case "pickup":
                         if (currentRoom.Items.Count > 0)
                         {
-                            player.PickupItem(currentRoom, currentRoom.Items[0]);
+                            var item = currentRoom.Items[0];
+                            player.PickupItem(currentRoom, item);
+                            currentRoom.Items.Remove(item); // Remover o item da sala
                         }
                         else
                         {
