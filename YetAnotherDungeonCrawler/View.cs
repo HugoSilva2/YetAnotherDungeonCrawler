@@ -53,12 +53,20 @@ namespace YetAnotherDungeonCrawler
             Console.WriteLine("Displaying inventory.");
         }
 
-        public void TheEnd()
+        public void TheEnd(bool victory)
         {
-            Console.WriteLine("You got the Artifact!");
-            Console.WriteLine("Thanks for playing our game!");
+            if (victory)
+            {
+                Console.WriteLine("Congratulations! You retrieved the long lost artifact!");
+                Console.WriteLine("Thanks for playing our game!");
+            }
+            else
+            {
+                Console.WriteLine("You have been defeated.");
+            }
             Console.WriteLine("THE END");
         }
+
 
         public void DisplayRoomInfo(Room room)
         {

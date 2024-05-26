@@ -12,7 +12,7 @@ namespace YetAnotherDungeonCrawler
         void PickUpItem(string name, Item item);
         void UI(int health, int maxhealth, int attackpower);
         void Inventory();
-        void TheEnd();
+        void TheEnd(bool victory);
         void DisplayRoomInfo(Room room);
         string GetPlayerInput();
         void ListActions(); 
