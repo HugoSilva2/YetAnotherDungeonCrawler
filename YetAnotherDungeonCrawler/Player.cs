@@ -11,13 +11,7 @@ namespace YetAnotherDungeonCrawler
             Name = name;
             _view = view;
         }
-
-        public void Move(string direction)
-        {
-
-            Console.WriteLine($"{Name} moves in {direction}.");
-        }
-
+        
         public bool PickupItem(Item item)
         {
             if (CanPickupItem())
