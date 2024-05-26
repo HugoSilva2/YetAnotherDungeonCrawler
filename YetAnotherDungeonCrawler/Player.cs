@@ -14,15 +14,29 @@ namespace YetAnotherDungeonCrawler
             _view = view;
         }
 
-        public void Move(string direction)
+        public void Move(Room currentRoom, string direction)
         {
-            Console.WriteLine($"{Name} moves in {direction}.");
+            if (currentRoom.Enemy == null)
+            {
+                Console.WriteLine($"{Name} moves {direction}.");
+            }
+            else
+            {
+                Console.WriteLine("You cannot move while there are enemies in the room.");
+            }
         }
 
-        public void PickupItem(Item item)
+        public void PickupItem(Room currentRoom, Item item)
         {
-            Inventory.Add(item);
-            _view.PickUpItem(Name, item);
+            if (currentRoom.Enemy == null)
+            {
+                Inventory.Add(item);
+                _view.PickUpItem(Name, item);
+            }
+            else
+            {
+                Console.WriteLine("You cannot pick up items while there are enemies in the room.");
+            }
         }
 
         public void UseHealthPotion()
@@ -30,14 +44,14 @@ namespace YetAnotherDungeonCrawler
             var potion = Inventory.Find(item => item.Name == "Health Potion");
             if (potion != null)
             {
-                Health += 50; 
-                if (Health > MaxHealth) Health = MaxHealth; 
+                Health += 50;
+                if (Health > MaxHealth) Health = MaxHealth;
                 Inventory.Remove(potion);
                 _view.Heal(Name, 50);
             }
             else
             {
-                _view.NoItem(potion);
+                _view.NoItem();
             }
         }
 
@@ -46,6 +60,4 @@ namespace YetAnotherDungeonCrawler
             base.Respawn();
         }
     }
-
-
 }

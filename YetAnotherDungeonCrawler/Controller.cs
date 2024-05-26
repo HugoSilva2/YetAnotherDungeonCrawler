@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace YetAnotherDungeonCrawler
 {
-        public class Controller
+    public class Controller
     {
         private Player player;
         private List<Room> rooms;
@@ -39,15 +39,22 @@ namespace YetAnotherDungeonCrawler
                 switch (action)
                 {
                     case "move right":
-                        currentRoomId += 1;
-                        if (!rooms.Exists(r => r.Id == currentRoomId))
+                        if (currentRoom.Enemy == null)
                         {
-                            currentRoomId -= 1;
-                            Console.WriteLine("Can't move any further");
+                            currentRoomId += 1;
+                            if (!rooms.Exists(r => r.Id == currentRoomId))
+                            {
+                                currentRoomId -= 1;
+                                Console.WriteLine("Can't move any further");
+                            }
+                            else
+                            {
+                                view.Move(player.Name, currentRoomId);
+                            }
                         }
                         else
                         {
-                            view.Move(player.Name, currentRoomId);
+                            Console.WriteLine("You cannot move while there are enemies in the room.");
                         }
                         break;
 
@@ -56,15 +63,22 @@ namespace YetAnotherDungeonCrawler
                         break;
 
                     case "move left":
-                        currentRoomId -= 1;
-                        if (!rooms.Exists(r => r.Id == currentRoomId))
+                        if (currentRoom.Enemy == null)
                         {
-                            currentRoomId += 1;
-                            Console.WriteLine("Can't move any further");
+                            currentRoomId -= 1;
+                            if (!rooms.Exists(r => r.Id == currentRoomId))
+                            {
+                                currentRoomId += 1;
+                                Console.WriteLine("Can't move any further");
+                            }
+                            else
+                            {
+                                view.Move(player.Name, currentRoomId);
+                            }
                         }
                         else
                         {
-                            view.Move(player.Name, currentRoomId);
+                            Console.WriteLine("You cannot move while there are enemies in the room.");
                         }
                         break;
 
@@ -96,18 +110,11 @@ namespace YetAnotherDungeonCrawler
                     case "pickup":
                         if (currentRoom.Items.Count > 0)
                         {
-                            var item = currentRoom.Items[0];
-                            player.PickupItem(item);
-                            currentRoom.Items.Remove(item);
-                            if (item.Name == "Artifact")
-                            {
-                                Console.WriteLine("You have found the long lost artifact!");
-                                gameRunning = false;
-                            }
+                            player.PickupItem(currentRoom, currentRoom.Items[0]);
                         }
                         else
                         {
-                            Console.WriteLine("No items to pick up.");
+                            view.NoItem();
                         }
                         break;
 
@@ -119,12 +126,9 @@ namespace YetAnotherDungeonCrawler
                         Console.WriteLine("Invalid action.");
                         break;
                 }
-
             }
 
             view.TheEnd(player.Health > 0 && player.Inventory.Exists(item => item.Name == "Artifact"));
         }
-
     }
 }
-   

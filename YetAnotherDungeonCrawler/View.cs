@@ -18,11 +18,10 @@ namespace YetAnotherDungeonCrawler
 
         public void Move(string name, int id)
         {
-            Console.WriteLine($"{name} moves {id}.");
+            Console.WriteLine($"{name} moves to room {id}.");
         }
 
         public void Attack(string name1, string name2, int damage)
-        
         {
             Console.WriteLine($"{name1} attacked {name2} for {damage} damage.");
         }
@@ -67,7 +66,6 @@ namespace YetAnotherDungeonCrawler
             Console.WriteLine("THE END");
         }
 
-
         public void DisplayRoomInfo(Room room)
         {
             if (room.Enemy == null)
@@ -78,21 +76,12 @@ namespace YetAnotherDungeonCrawler
             {
                 Console.WriteLine($"Enemy: {room.Enemy.Name}");
             }
-            
-            Console.WriteLine("Items in the room:");
-            if (room.Items.Count > 0)
+            Console.WriteLine("Items in the room: ");
+            foreach (var item in room.Items)
             {
-                foreach (var item in room.Items)
-                {
-                    Console.WriteLine(item.Name);
-                }
-            }
-            else
-            {
-                Console.WriteLine("No items in the room.");
+                Console.WriteLine(item.Name);
             }
         }
-
 
         public string GetPlayerInput()
         {
@@ -111,9 +100,9 @@ namespace YetAnotherDungeonCrawler
             Console.WriteLine(" - quit");
         }
 
-        public void NoItem(Item item)
+        public void NoItem()
         {
-            Console.WriteLine($"No {item} in inventory.");
+            Console.WriteLine("No items to pick up.");
         }
     }
 }

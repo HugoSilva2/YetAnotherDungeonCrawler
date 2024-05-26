@@ -15,6 +15,7 @@ namespace YetAnotherDungeonCrawler
         void TheEnd(bool victory);
         void DisplayRoomInfo(Room room);
         string GetPlayerInput();
-        void ListActions(); 
+        void ListActions();
+        void NoItem();
     }
 }
