@@ -101,12 +101,18 @@ namespace YetAnotherDungeonCrawler
                             var item = currentRoom.Items[0];
                             player.PickupItem(item);
                             currentRoom.Items.Remove(item);
+                            if (item.Name == "Artifact")
+                            {
+                                Console.WriteLine("You have found the long lost artifact!");
+                                gameRunning = false;
+                            }
                         }
                         else
                         {
                             Console.WriteLine("No items to pick up.");
                         }
                         break;
+
 
                     case "quit":
                         gameRunning = false;
