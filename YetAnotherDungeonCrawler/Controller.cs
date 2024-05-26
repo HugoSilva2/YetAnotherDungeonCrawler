@@ -120,10 +120,6 @@ namespace YetAnotherDungeonCrawler
                         break;
                 }
 
-                if (gameRunning)
-                {
-                    view.DisplayRoomInfo(currentRoom);
-                }
             }
 
             view.TheEnd(player.Health > 0 && player.Inventory.Exists(item => item.Name == "Artifact"));
