@@ -5,10 +5,13 @@ namespace YetAnotherDungeonCrawler
 {
     public class Player : Character
     {
-        public Player(string name, int maxHealth, int attackPower)
+        private IView _view;
+
+        public Player(string name, int maxHealth, int attackPower, IView view)
             : base(maxHealth, attackPower)
         {
             Name = name;
+            _view = view;
         }
 
         public void Move(string direction)
@@ -19,7 +22,7 @@ namespace YetAnotherDungeonCrawler
         public void PickupItem(Item item)
         {
             Inventory.Add(item);
-            Console.WriteLine($"{Name} picked up {item.Name}.");
+            _view.PickUpItem(Name, item);
         }
 
         public void UseHealthPotion()
@@ -30,11 +33,11 @@ namespace YetAnotherDungeonCrawler
                 Health += 50; 
                 if (Health > MaxHealth) Health = MaxHealth; 
                 Inventory.Remove(potion);
-                Console.WriteLine($"{Name} used a Health Potion and restored health.");
+                _view.Heal(Name, 50);
             }
             else
             {
-                Console.WriteLine("No Health Potion in inventory.");
+                _view.NoItem(potion);
             }
         }
 

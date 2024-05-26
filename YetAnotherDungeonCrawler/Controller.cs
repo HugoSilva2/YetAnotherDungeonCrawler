@@ -14,7 +14,7 @@ namespace YetAnotherDungeonCrawler
         {
             view.Intro();
 
-            player = new Player("Lord W Rizz", 100, 20);
+            player = new Player("Lord W Rizz", 100, 20, view);
             rooms = new List<Room>
             {
                 new Room(-4, new Enemy("Novice", 200, 30), new List<Item> { new Item("Glasses") }),

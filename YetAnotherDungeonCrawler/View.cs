@@ -110,5 +110,10 @@ namespace YetAnotherDungeonCrawler
             Console.WriteLine(" - pickup");
             Console.WriteLine(" - quit");
         }
+
+        public void NoItem(Item item)
+        {
+            Console.WriteLine($"No {item} in inventory.");
+        }
     }
 }
