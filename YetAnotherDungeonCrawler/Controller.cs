@@ -108,15 +108,21 @@ namespace YetAnotherDungeonCrawler
                         break;
 
                     case "pickup":
-                        if (currentRoom.Items.Count > 0)
+                        if (currentRoom.Enemy == null)
                         {
-                            var item = currentRoom.Items[0];
-                            player.PickupItem(currentRoom, item);
-                            currentRoom.Items.Remove(item); // Remover o item da sala
+                            if (currentRoom.Items.Count > 0)
+                            {
+                                var item = currentRoom.Items[0];
+                                player.PickupItem(currentRoom, item);
+                            }
+                            else
+                            {
+                                view.NoItem();
+                            }
                         }
                         else
                         {
-                            view.NoItem();
+                            Console.WriteLine("You cannot pick up items while there are enemies in the room.");
                         }
                         break;
 
