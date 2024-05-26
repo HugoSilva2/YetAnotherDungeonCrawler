@@ -15,8 +15,18 @@ namespace YetAnotherDungeonCrawler
         void TheEnd(bool victory);
         void DisplayRoomInfo(Room room);
         string GetPlayerInput();
-        void ListActions();
+        void ListActions(); 
         void NoItem();
-        void NoPotion(); // Novo método para mensagem personalizada de poção
+        void NoMove();
+        void MoveWhileEnemy();
+        void EnemyDead(string name);
+        void NoEnemies();
+        void InvalidAction();
+        void NoPickUP();
+        public void SkillIssue();
+        public void Attack2(string thisName, string otherName, int attackpower);
+        public void ShowHP(string name, int hp);
+        public void Die(string Name);
+        public void Respawn(string Name);
     }
 }

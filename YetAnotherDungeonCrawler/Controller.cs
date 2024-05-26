@@ -17,15 +17,15 @@ namespace YetAnotherDungeonCrawler
             player = new Player("John Warrior", 100, 30, view);
             rooms = new List<Room>
             {
-                new Room(-4, new Enemy("Skeleton", 35, 20), new List<Item> { new Item("Health Potion") }),
-                new Room(-3, new Enemy("Skeleton", 35, 20), new List<Item> { new Item("Health Potion") }),
-                new Room(-2, new Enemy("Goblin", 20, 10), new List<Item> { new Item("Health Potion") }),
-                new Room(-1, new Enemy("Goblin", 20, 10), new List<Item> { new Item("Useless Junk") }),
-                new Room(0, new Enemy("Goblin", 20, 10), new List<Item> { new Item("Health Potion") }),
-                new Room(1, new Enemy("Skeleton", 35, 20), new List<Item> { new Item("Useless Junk") }),
-                new Room(2, new Enemy("Skeleton", 35, 20), new List<Item> { new Item("Health Potion") }),
-                new Room(3, new Enemy("Slime", 120, 15), new List<Item> { new Item("Even More Useless Junk") }),
-                new Room(4, new Enemy("Bob The Necromancer", 200, 40), new List<Item> { new Item("Artifact") })
+                new Room(-4, new Enemy("Skeleton", 35, 20, view), new List<Item> { new Item("Health Potion") }),
+                new Room(-3, new Enemy("Skeleton", 35, 20, view), new List<Item> { new Item("Health Potion") }),
+                new Room(-2, new Enemy("Goblin", 20, 10, view), new List<Item> { new Item("Health Potion") }),
+                new Room(-1, new Enemy("Goblin", 20, 10, view), new List<Item> { new Item("Useless Junk") }),
+                new Room(0, new Enemy("Goblin", 20, 10, view), new List<Item> { new Item("Health Potion") }),
+                new Room(1, new Enemy("Skeleton", 35, 20, view), new List<Item> { new Item("Useless Junk") }),
+                new Room(2, new Enemy("Skeleton", 35, 20, view), new List<Item> { new Item("Health Potion") }),
+                new Room(3, new Enemy("Slime", 120, 15, view), new List<Item> { new Item("Even More Useless Junk") }),
+                new Room(4, new Enemy("Bob The Necromancer", 200, 40, view), new List<Item> { new Item("Artifact") })
             };
 
             gameRunning = true;
@@ -45,7 +45,7 @@ namespace YetAnotherDungeonCrawler
                             if (!rooms.Exists(r => r.Id == currentRoomId))
                             {
                                 currentRoomId -= 1;
-                                Console.WriteLine("Can't move any further");
+                                view.NoMove();
                             }
                             else
                             {
@@ -54,7 +54,7 @@ namespace YetAnotherDungeonCrawler
                         }
                         else
                         {
-                            Console.WriteLine("You cannot move while there are enemies in the room.");
+                            view.MoveWhileEnemy();
                         }
                         break;
 
@@ -69,7 +69,7 @@ namespace YetAnotherDungeonCrawler
                             if (!rooms.Exists(r => r.Id == currentRoomId))
                             {
                                 currentRoomId += 1;
-                                Console.WriteLine("Can't move any further");
+                                view.NoMove();
                             }
                             else
                             {
@@ -78,7 +78,7 @@ namespace YetAnotherDungeonCrawler
                         }
                         else
                         {
-                            Console.WriteLine("You cannot move while there are enemies in the room.");
+                            view.MoveWhileEnemy();
                         }
                         break;
 
@@ -88,7 +88,7 @@ namespace YetAnotherDungeonCrawler
                             player.Attack(currentRoom.Enemy);
                             if (currentRoom.Enemy.Health <= 0)
                             {
-                                Console.WriteLine($"{currentRoom.Enemy.Name} was slain.");
+                                view.EnemyDead(currentRoom.Enemy.Name);
                                 currentRoom.Enemy = null;
                             }
                             else
@@ -96,14 +96,14 @@ namespace YetAnotherDungeonCrawler
                                 currentRoom.Enemy.Attack(player);
                                 if (player.Health <= 0)
                                 {
-                                    Console.WriteLine("You have been killed.");
+                                    view.SkillIssue();
                                     gameRunning = false;
                                 }
                             }
                         }
                         else
                         {
-                            Console.WriteLine("There is no enemy to attack.");
+                            view.NoEnemies();
                         }
                         break;
 
@@ -113,7 +113,7 @@ namespace YetAnotherDungeonCrawler
                             if (currentRoom.Items.Count > 0)
                             {
                                 var item = currentRoom.Items[0];
-                                player.PickupItem(currentRoom, item);
+                                player.PickupItem(item);
                             }
                             else
                             {
@@ -122,7 +122,7 @@ namespace YetAnotherDungeonCrawler
                         }
                         else
                         {
-                            Console.WriteLine("You cannot pick up items while there are enemies in the room.");
+                           view.NoPickUP();
                         }
                         break;
 
@@ -131,7 +131,7 @@ namespace YetAnotherDungeonCrawler
                         break;
 
                     default:
-                        Console.WriteLine("Invalid action.");
+                        view.InvalidAction();
                         break;
                 }
             }

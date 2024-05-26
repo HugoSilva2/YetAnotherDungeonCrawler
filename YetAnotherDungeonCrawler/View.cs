@@ -102,5 +102,60 @@ namespace YetAnotherDungeonCrawler
         {
             Console.WriteLine("You have no health potions left.");
         }
+
+        public void NoMove()
+        {
+            Console.WriteLine("You can't move any further");
+        }
+
+        public void MoveWhileEnemy()
+        {
+            Console.WriteLine("You cannot move while there are enemies in the room.");
+        }
+
+        public void EnemyDead(string name)
+        {
+            Console.WriteLine($"{name} was slain.");
+        }
+
+        public void NoEnemies()
+        {
+            Console.WriteLine("There is no enemy to attack.");
+        }
+
+        public void InvalidAction()
+        {
+            Console.WriteLine("Invalid action.");
+        }
+
+        public void NoPickUP()
+        {
+            Console.WriteLine("You cannot pick up items while there are enemies in the room.");
+        }
+
+        public void SkillIssue()
+        {
+            Console.WriteLine("You have been killed.");
+        }
+
+        public void Attack2(string thisName, string otherName, int attackpower)
+        {
+            Console.WriteLine($"{thisName} attacked {otherName} for {attackpower} damage.");
+        }
+
+        public void ShowHP(string name, int hp)
+        {
+            Console.WriteLine($"{name} has {hp} health remaining.");
+        }
+
+        public void Die(string Name)
+        {
+            Console.WriteLine($"{Name} has suffered a very tragic and painful death");
+        }
+
+        public void Respawn(string Name)
+        {
+            Console.WriteLine($"{Name} has respawned with full health.");
+        }
     }
 }

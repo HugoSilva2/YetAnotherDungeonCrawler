@@ -12,18 +12,20 @@ namespace YetAnotherDungeonCrawler
         public int MaxHealth { get; set; }
         public int AttackPower { get; set; }
         public List<Item> Inventory { get; set; }
+        public IView _view;
 
-        public Character(int maxHealth, int attackPower)
+        public Character(int maxHealth, int attackPower, IView view)
         {
             MaxHealth = maxHealth;
             Health = maxHealth; 
             AttackPower = attackPower;
             Inventory = new List<Item>();
+            _view = view;
         }
         
         public void Attack(Character target)
         {
-            Console.WriteLine($"{Name} attacked {target.Name} for {AttackPower} damage.");
+            _view.Attack2(Name, target.Name, AttackPower);
             target.Health -= AttackPower;
 
             if (target.Health <= 0)
@@ -33,7 +35,7 @@ namespace YetAnotherDungeonCrawler
             }
             else
             {
-                Console.WriteLine($"{target.Name} has {target.Health} health remaining.");
+                _view.ShowHP(target.Name, target.Health);
             }
         }
 
@@ -41,7 +43,7 @@ namespace YetAnotherDungeonCrawler
         {
             if (Health <= 0)
             {
-                Console.WriteLine($"{Name} has suffered a very tragic and painful death");
+                _view.Die(Name);
             }
         }
 
@@ -49,7 +51,7 @@ namespace YetAnotherDungeonCrawler
         {
             Health = MaxHealth;
             IsAlive = true;
-            Console.WriteLine($"{Name} has respawned with full health.");
+            _view.Respawn(Name);
         }
     }
 
