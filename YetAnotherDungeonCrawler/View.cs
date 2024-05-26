@@ -73,15 +73,26 @@ namespace YetAnotherDungeonCrawler
             if (room.Enemy == null)
             {
                 Console.WriteLine("Room Cleared");
-                return;
             }
-            Console.WriteLine($"Enemy: {room.Enemy.Name}");
-            Console.WriteLine("Items in the room: ");
-            foreach (var item in room.Items)
+            else
             {
-                Console.WriteLine(item.Name);
+                Console.WriteLine($"Enemy: {room.Enemy.Name}");
+            }
+            
+            Console.WriteLine("Items in the room:");
+            if (room.Items.Count > 0)
+            {
+                foreach (var item in room.Items)
+                {
+                    Console.WriteLine(item.Name);
+                }
+            }
+            else
+            {
+                Console.WriteLine("No items in the room.");
             }
         }
+
 
         public string GetPlayerInput()
         {
@@ -94,8 +105,6 @@ namespace YetAnotherDungeonCrawler
             Console.WriteLine("Possible actions:");
             Console.WriteLine(" - move right");
             Console.WriteLine(" - move left");
-            Console.WriteLine(" - move up");
-            Console.WriteLine(" - move down");
             Console.WriteLine(" - attack");
             Console.WriteLine(" - use potion");
             Console.WriteLine(" - pickup");
