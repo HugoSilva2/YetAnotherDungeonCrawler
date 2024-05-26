@@ -22,11 +22,28 @@ namespace YetAnotherDungeonCrawler
             Console.WriteLine($"{Name} picked up {item.Name}.");
         }
 
+        public void UseHealthPotion()
+        {
+            var potion = Inventory.Find(item => item.Name == "Health Potion");
+            if (potion != null)
+            {
+                Health += 50; 
+                if (Health > MaxHealth) Health = MaxHealth; 
+                Inventory.Remove(potion);
+                Console.WriteLine($"{Name} used a Health Potion and restored health.");
+            }
+            else
+            {
+                Console.WriteLine("No Health Potion in inventory.");
+            }
+        }
+
+
         public void Respawn()
         {
             if (!IsAlive)
             {
-                // Reset game
+                
             }
         }
     }
