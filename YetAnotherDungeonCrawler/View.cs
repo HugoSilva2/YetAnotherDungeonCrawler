@@ -89,6 +89,7 @@ namespace YetAnotherDungeonCrawler
             Console.WriteLine(" - move up");
             Console.WriteLine(" - move down");
             Console.WriteLine(" - attack");
+            Console.WriteLine(" - use potion");
             Console.WriteLine(" - pickup");
             Console.WriteLine(" - quit");
         }
