@@ -21,11 +21,11 @@ namespace YetAnotherDungeonCrawler
                 new Room(-3, new Enemy("Novice", 200, 30), new List<Item> { new Item("Glasses") }),
                 new Room(-2, new Enemy("Novice", 200, 30), new List<Item> { new Item("Glasses") }),
                 new Room(-1, new Enemy("Novice", 200, 30), new List<Item> { new Item("Glasses") }),
-                new Room(0, new Enemy("Novice", 200, 30), new List<Item> { new Item("Glasses") }),
+                new Room(0, new Enemy("Novice", 200, 30), new List<Item> { new Item("Health Potion") }),
                 new Room(1, new Enemy("Loyal Intern", 50, 10), new List<Item> { new Item("Coffee Mug") }),
                 new Room(2, new Enemy("Janitor", 80, 15), new List<Item> { new Item("Broom") }),
                 new Room(3, new Enemy("Novice", 200, 30), new List<Item> { new Item("Glasses") }),
-                new Room(4, new Enemy("Novice", 200, 30), new List<Item> { new Item("Glasses") })
+                new Room(4, new Enemy("Novice", 200, 30), new List<Item> { new Item("Artifact") })
             };
 
             gameRunning = true;
