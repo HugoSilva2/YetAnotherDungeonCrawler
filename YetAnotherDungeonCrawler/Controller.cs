@@ -111,6 +111,7 @@ namespace YetAnotherDungeonCrawler
             }
         }
 
+
         private void PickupItem(Room currentRoom, IView view)
         {
             if (currentRoom.Items.Count > 0)

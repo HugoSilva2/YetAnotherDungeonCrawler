@@ -37,12 +37,20 @@ namespace YetAnotherDungeonCrawler
             }
         }
 
-        void Die()
+        public void Die()
         {
             if (Health <= 0)
             {
                 Console.WriteLine($"{Name} has suffered a very tragic and painful death");
             }
         }
+
+        public void Respawn()
+        {
+            Health = MaxHealth;
+            IsAlive = true;
+            Console.WriteLine($"{Name} has respawned with full health.");
+        }
     }
+
 }

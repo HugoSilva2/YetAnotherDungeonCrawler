@@ -38,15 +38,10 @@ namespace YetAnotherDungeonCrawler
             }
         }
 
-
         public void Respawn()
         {
-            if (!IsAlive)
-            {
-                Health = MaxHealth;
-                IsAlive = true;
-                Console.WriteLine($"{Name} has respawned with full health.");
-            }
+            base.Respawn();
         }
     }
+
 }
