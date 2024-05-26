@@ -124,7 +124,7 @@ namespace YetAnotherDungeonCrawler
                 }
             }
 
-            view.TheEnd();
+            view.TheEnd(player.Health > 0 && player.Inventory.Exists(item => item.Name == "Artifact"));
         }
     }
 }
