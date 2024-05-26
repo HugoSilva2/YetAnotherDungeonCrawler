@@ -38,10 +38,11 @@ namespace YetAnotherDungeonCrawler
             }
         }
 
-        public void Respawn()
+        public new void Respawn()
         {
             base.Respawn();
         }
     }
+
 
 }
