@@ -6,20 +6,19 @@
 1. Organização Inicial do Projeto
 2. Estrutura do Projeto (MVC)
 3. README.md + UML das classes
-4. Mapa da Masmorra
+4. Passar WriteLines de todas as classes para o IView/View
 
 **Tomás Cardoso 22303462**
 1. Item Usável
 2. Inimigo ataca de volta
 3. Sistema de Respawn
 4. Final do Jogo (Por morrer ou chegar ao final)
-5. 
+5. Impedir que o jogador saia da sala ou pegar o item sem derrotar o inimigo primeiro
 
 **Leonardo Henrique 22304949**
 1. Bug Fixing 
 2. Base do Ficheiro Character.cs
 3. Impedir que o jogo dê Crash ao atacar uma sala Vazia
-
 
 ###### Git Utilizado: https://github.com/HugoSilva2/YetAnotherDungeonCrawler
 
@@ -66,14 +65,6 @@ classDiagram
         class IView
         <<Interface>> IView
 ```
-_________________________________________________
 
-```mermaid
----
-title : Mapa da Masmorra
----
-classDiagram
-        Sala Final <-- Sala 12
-        Sala 2 <-- Sala 1
-
-```
+##### Referências
+ChatGPT e o Stack Overflow foram usados essencialmente para corrigir pequenas partes do código que não conseguiamos decifrar sozinhos e para esclarecer algumas dúvidas.
