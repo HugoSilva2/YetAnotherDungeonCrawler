@@ -43,7 +43,9 @@ namespace YetAnotherDungeonCrawler
         {
             if (!IsAlive)
             {
-                
+                Health = MaxHealth;
+                IsAlive = true;
+                Console.WriteLine($"{Name} has respawned with full health.");
             }
         }
     }
