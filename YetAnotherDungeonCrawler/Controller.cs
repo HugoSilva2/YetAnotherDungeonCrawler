@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace YetAnotherDungeonCrawler
 {
-    public class Controller
+        public class Controller
     {
         private Player player;
         private List<Room> rooms;
@@ -39,80 +39,24 @@ namespace YetAnotherDungeonCrawler
                 switch (action)
                 {
                     case "move right":
-                        currentRoomId += 1;
-                        if (!rooms.Exists(r => r.Id == currentRoomId))
-                        {
-                            currentRoomId -= 1;
-                            Console.WriteLine("Can't move any further");
-                        }
-                        else
-                        {
-                            view.Move(player.Name, currentRoomId);
-                        }
+                        MovePlayer(1, view);
                         break;
-                    
+
+                    case "move left":
+                        MovePlayer(-1, view);
+                        break;
+
                     case "use potion":
                         player.UseHealthPotion();
                         break;
 
-
-                    case "move left":
-                        currentRoomId -= 1;
-                        if (!rooms.Exists(r => r.Id == currentRoomId))
-                        {
-                            currentRoomId += 1;
-                            Console.WriteLine("Can't move any further");
-                        }
-                        else
-                        {
-                            view.Move(player.Name, currentRoomId);
-                        }
-                        break;
-
                     case "attack":
-                        if (currentRoom.Enemy != null)
-                        {
-                            player.Attack(currentRoom.Enemy);
-                            if (currentRoom.Enemy.Health <= 0)
-                            {
-                                Console.WriteLine($"{currentRoom.Enemy.Name} was slain.");
-                                currentRoom.Enemy = null;  
-                            }
-                            else
-                            {
-                            
-                                currentRoom.Enemy.Attack(player);
-                                if (player.Health <= 0)
-                                {
-                                    Console.WriteLine("You have been killed.");
-                                    gameRunning = false;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            Console.WriteLine("There is no enemy to attack.");
-                        }
+                        PerformAttack(currentRoom, view);
                         break;
 
                     case "pickup":
-                        if (currentRoom.Items.Count > 0)
-                        {
-                            var item = currentRoom.Items[0];
-                            player.PickupItem(item);
-                            currentRoom.Items.Remove(item);
-                            if (item.Name == "Artifact")
-                            {
-                                Console.WriteLine("You have found the long lost artifact!");
-                                gameRunning = false;
-                            }
-                        }
-                        else
-                        {
-                            Console.WriteLine("No items to pick up.");
-                        }
+                        PickupItem(currentRoom, view);
                         break;
-
 
                     case "quit":
                         gameRunning = false;
@@ -125,6 +69,65 @@ namespace YetAnotherDungeonCrawler
             }
 
             view.TheEnd(player.Health > 0 && player.Inventory.Exists(item => item.Name == "Artifact"));
+        }
+
+        private void MovePlayer(int direction, IView view)
+        {
+            currentRoomId += direction;
+            if (!rooms.Exists(r => r.Id == currentRoomId))
+            {
+                currentRoomId -= direction;
+                Console.WriteLine("Can't move any further");
+            }
+            else
+            {
+                view.Move(player.Name, currentRoomId);
+            }
+        }
+
+        private void PerformAttack(Room currentRoom, IView view)
+        {
+            if (currentRoom.Enemy != null)
+            {
+                player.Attack(currentRoom.Enemy);
+                if (currentRoom.Enemy.Health <= 0)
+                {
+                    Console.WriteLine($"{currentRoom.Enemy.Name} was slain.");
+                    currentRoom.Enemy = null;  
+                }
+                else
+                {
+                    currentRoom.Enemy.Attack(player);
+                    if (player.Health <= 0)
+                    {
+                        Console.WriteLine("You have been killed.");
+                        gameRunning = false;
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("There is no enemy to attack.");
+            }
+        }
+
+        private void PickupItem(Room currentRoom, IView view)
+        {
+            if (currentRoom.Items.Count > 0)
+            {
+                var item = currentRoom.Items[0];
+                player.PickupItem(item);
+                currentRoom.Items.Remove(item);
+                if (item.Name == "Artifact")
+                {
+                    Console.WriteLine("You have found the long lost artifact!");
+                    gameRunning = false;
+                }
+            }
+            else
+            {
+                Console.WriteLine("No items to pick up.");
+            }
         }
     }
 }
