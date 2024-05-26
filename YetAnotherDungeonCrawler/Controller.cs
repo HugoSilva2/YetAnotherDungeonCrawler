@@ -30,81 +30,88 @@ namespace YetAnotherDungeonCrawler
 
             gameRunning = true;
             while (gameRunning)
-            {
-                Room currentRoom = rooms.Find(r => r.Id == currentRoomId);
-                view.DisplayRoomInfo(currentRoom);
-                view.ListActions();
-                string action = view.GetPlayerInput().ToLower();
+    {
+        Room currentRoom = rooms.Find(r => r.Id == currentRoomId);
+        view.DisplayRoomInfo(currentRoom);
+        view.ListActions();
+        string action = view.GetPlayerInput().ToLower();
 
-                switch (action)
+        switch (action)
+        {
+            case "move right":
+                currentRoomId += 1;
+                if (!rooms.Exists(r => r.Id == currentRoomId))
                 {
-                    case "move right":
-                        currentRoomId += 1;
-                        if (!rooms.Exists(r => r.Id == currentRoomId))
-                        {
-                            currentRoomId -= 1;
-                            Console.WriteLine("Can't move any further");
-                        }
-                        else
-                        {
-                            view.Move(player.Name, currentRoomId);
-                        }
-                        break;
-
-                    case "move left":
-                        currentRoomId -= 1;
-                        if (!rooms.Exists(r => r.Id == currentRoomId))
-                        {
-                            currentRoomId += 1;
-                            Console.WriteLine("Can't move any further");
-                        }
-                        else
-                        {
-                            view.Move(player.Name, currentRoomId);
-                        }
-                        break;
-
-                    case "attack":
-                        if (currentRoom.Enemy != null)
-                        {
-                            player.Attack(currentRoom.Enemy);
-                        if (currentRoom.Enemy.Health <= 0)
-                        {
-                            Console.WriteLine($"{currentRoom.Enemy.Name} was slain.");
-                            currentRoom.Enemy = null;  // Remove enemy
-                        }
-                        }
-                        else
-                        {
-                        Console.WriteLine("There is no enemy to attack.");
-                        }
-                        break;
-
-
-                    case "pickup":
-                        if (currentRoom.Items.Count > 0)
-                        {
-                            var item = currentRoom.Items[0];
-                            player.PickupItem(item);
-                            currentRoom.Items.Remove(item);
-                        }
-                        else
-                        {
-                            Console.WriteLine("No items to pick up.");
-                        }
-                        break;
-
-                    case "quit":
-                        gameRunning = false;
-                        break;
-
-                    default:
-                        Console.WriteLine("Invalid action.");
-                        break;
+                    currentRoomId -= 1;
+                    Console.WriteLine("Can't move any further");
                 }
-            }
+                else
+                {
+                    view.Move(player.Name, currentRoomId);
+                }
+                break;
 
-            view.TheEnd();
+            case "move left":
+                currentRoomId -= 1;
+                if (!rooms.Exists(r => r.Id == currentRoomId))
+                {
+                    currentRoomId += 1;
+                    Console.WriteLine("Can't move any further");
+                }
+                else
+                {
+                    view.Move(player.Name, currentRoomId);
+                }
+                break;
+
+            case "attack":
+                if (currentRoom.Enemy != null)
+                {
+                    player.Attack(currentRoom.Enemy);
+                    if (currentRoom.Enemy.Health <= 0)
+                    {
+                        Console.WriteLine($"{currentRoom.Enemy.Name} was slain.");
+                        currentRoom.Enemy = null;  
+                    }
+                    else
+                    {
+                       
+                        currentRoom.Enemy.Attack(player);
+                        if (player.Health <= 0)
+                        {
+                            Console.WriteLine("You have been killed.");
+                            gameRunning = false;
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("There is no enemy to attack.");
+                }
+                break;
+
+            case "pickup":
+                if (currentRoom.Items.Count > 0)
+                {
+                    var item = currentRoom.Items[0];
+                    player.PickupItem(item);
+                    currentRoom.Items.Remove(item);
+                }
+                else
+                {
+                    Console.WriteLine("No items to pick up.");
+                }
+                break;
+
+            case "quit":
+                gameRunning = false;
+                break;
+
+            default:
+                Console.WriteLine("Invalid action.");
+                break;
         }
     }
+
+    view.TheEnd();
 }
