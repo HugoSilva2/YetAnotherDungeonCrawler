@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace YetAnotherDungeonCrawler
 {
-    public class Character
+        public class Character
     {
         public bool IsAlive { get; private set; } = true;
         public bool CanMove { get; set; }
@@ -16,7 +16,7 @@ namespace YetAnotherDungeonCrawler
         public Character(int maxHealth, int attackPower)
         {
             MaxHealth = maxHealth;
-            Health = maxHealth; // Initialize Health to MaxHealth
+            Health = maxHealth; 
             AttackPower = attackPower;
             Inventory = new List<Item>();
         }
@@ -25,7 +25,6 @@ namespace YetAnotherDungeonCrawler
         {
             Console.WriteLine($"{Name} attacked {target.Name} for {AttackPower} damage.");
             target.Health -= AttackPower;
-            this.Health -= target.AttackPower;
 
             if (target.Health <= 0)
             {
